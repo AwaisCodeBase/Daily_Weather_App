@@ -1,7 +1,9 @@
 // libraries
 const express = require('express')
-const dotenv = require('dotenv').config();
-
+// const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/config.env' });
+const cors = require('cors');
 // Files
 const logMiddleware = require('./middleware/logMiddleware');
 const errorMiddleware = require('./middleware/errorMiddleware');
