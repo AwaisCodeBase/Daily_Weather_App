@@ -1,7 +1,6 @@
 // libraries
 const express = require('express')
 const dotenv = require('dotenv').config();
-const mongoose = require('mongoose');
 
 // Files
 const logMiddleware = require('./middleware/logMiddleware');
@@ -13,7 +12,6 @@ const app = express();
 
 // environmental variables
 const PORT = process.env.PORT;
-const MONGO_DB = process.env.MONGO_DB_URL;
 
 // middleware
 app.use(express.json());    // for JSON Parsing
@@ -22,13 +20,7 @@ app.use(logMiddleware);     // for logging
 // routes
 app.use("/weather",weatherRoutes);
 
-// MongoDB connection
-mongoose.connect(MONGO_DB)
-.then(() => {
-    console.log('MongoDB successfully connected.');
-}).catch((err) => {
-    console.error('Error connecting to MongoDB: ', err.message);
-});
+
 
 // Error handling middleware - global
 app.use(errorMiddleware);
