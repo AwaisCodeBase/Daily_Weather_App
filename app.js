@@ -2,7 +2,7 @@
 const express = require('express')
 // const dotenv = require('dotenv').config();
 const dotenv = require('dotenv');
-dotenv.config({ path: './config/config.env' });
+dotenv.config()
 const cors = require('cors');
 // Files
 const logMiddleware = require('./middleware/logMiddleware');
@@ -13,7 +13,7 @@ const weatherRoutes = require('./routes/weatherRouter');
 const app = express();
 
 // environmental variables
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // middleware
 app.use(express.json());    // for JSON Parsing

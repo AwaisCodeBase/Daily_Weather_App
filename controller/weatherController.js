@@ -46,9 +46,9 @@ const getUpdates = async(req,res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'webdeveloper.zakir152@gmail.com',
-                pass: 'tmoj ebmu ovhw upos'
-            }
+                user: process.env.SENDER_EMAIL,
+                pass: process.env.APP_PASSWORD
+              }
         });
 
         if (data && data.dataseries) {
@@ -95,13 +95,13 @@ const getUpdates = async(req,res) => {
 
         const smsInfo = await client.messages.create({
             body: messageBody,
-            from: '+923171339788',
-            to: '+923336706119'
+            from: '+923484056581',
+            to: '+923166714863'
         });
 
         console.log(`SMS sent: ${smsInfo.sid}`);
         
-        sendEmailWithJSON(url);
+        // sendEmailWithJSON(url);
 
     }catch(error)
     {
